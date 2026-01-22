@@ -1,6 +1,9 @@
 Release notes
 =============
 
+- 構造体 Animation のフィールド Width を省略できるようにした (#1)
+  - go-runewidth で自動計測するようにした
+
 v0.2.0
 ------
 Sep 14, 2021

@@ -9,6 +9,11 @@ import (
 	"github.com/mattn/go-runewidth"
 )
 
+const (
+	CursorOff = "\x1B[?25l"
+	CursorOn  = "\x1B[?25h"
+)
+
 type Animation struct {
 	Frame    []string
 	Width    int

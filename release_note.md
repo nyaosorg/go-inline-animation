@@ -6,6 +6,7 @@ Release notes
 -  Added the `Interval` field. (#2)
 -  Added built-in patterns: `Dots` and `Bars`. (#3)
 -  Set `Dots` as the default pattern for the `Progress` function. (#3)
+-  Added `CursorOn` and `CursorOff` constants. (#4)
 
 v0.2.0
 ------

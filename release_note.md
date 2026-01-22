@@ -1,6 +1,9 @@
 Release notes
 =============
 
+-  Made the `Width` field of the `Animation` struct optional. (#1)
+  -  It is now automatically measured using `go-runewidth`.
+
 v0.2.0
 ------
 Sep 14, 2021

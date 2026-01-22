@@ -1,23 +1,25 @@
 //go:build run
-// +build run
 
 package main
 
 import (
 	"fmt"
-	"os"
 	"time"
+
+	"github.com/mattn/go-colorable"
 
 	"github.com/nyaosorg/go-inline-animation"
 )
 
 func main() {
-	fmt.Print("Test:")
+	term := colorable.NewColorableStdout()
+	fmt.Fprint(term, animation.CursorOff)
+	defer fmt.Fprintln(term, animation.CursorOn)
 
 	end := animation.Animation{
-		Frame: []string{"(^_^)", "(-_-)"},
-		Width: 5,
-	}.Progress(os.Stdout)
+		Frame:    []string{"(^_^)", "(-_-)"},
+		Interval: time.Second / 2,
+	}.Progress(term)
 
 	defer end()
 

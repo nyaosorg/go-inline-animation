@@ -6,6 +6,7 @@ Release notes
 - フィールド: Interval を追加 (#2)
 - パターン Dots, Bars を用意 (#3)
 - 関数 Progress のデフォルトパターンとして Dots を使うようにした (#3)
+- 定数 CursorOn と CursorOff を追加 (#4)
 
 v0.2.0
 ------

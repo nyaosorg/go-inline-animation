@@ -1,7 +1,6 @@
 package animation
 
 import (
-	"fmt"
 	"io"
 	"os"
 	"strings"
@@ -19,7 +18,7 @@ func (this Animation) Progress(out io.Writer) func() {
 		backspace := strings.Repeat("\b", this.Width)
 		erase := strings.Repeat(" ", this.Width)
 
-		fmt.Fprint(out, this.Frame[0])
+		io.WriteString(out, this.Frame[0])
 
 		ticker := time.NewTicker(time.Second / 2)
 		i := 1
@@ -28,16 +27,16 @@ func (this Animation) Progress(out io.Writer) func() {
 			case <-done:
 				ticker.Stop()
 				close(done)
-				fmt.Fprint(out, backspace)
-				fmt.Fprint(out, erase)
-				fmt.Fprint(out, backspace)
+				io.WriteString(out, backspace)
+				io.WriteString(out, erase)
+				io.WriteString(out, backspace)
 				return
 			case <-ticker.C:
 				if i >= len(this.Frame) {
 					i = 0
 				}
-				fmt.Fprint(out, backspace)
-				fmt.Fprint(out, this.Frame[i])
+				io.WriteString(out, backspace)
+				io.WriteString(out, this.Frame[i])
 				i++
 			}
 		}

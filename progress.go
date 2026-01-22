@@ -10,8 +10,9 @@ import (
 )
 
 type Animation struct {
-	Frame []string
-	Width int
+	Frame    []string
+	Width    int
+	Interval time.Duration
 }
 
 func (this Animation) Progress(out io.Writer) func() {
@@ -26,7 +27,11 @@ func (this Animation) Progress(out io.Writer) func() {
 
 		io.WriteString(out, this.Frame[0])
 
-		ticker := time.NewTicker(time.Second / 2)
+		interval := this.Interval
+		if interval <= 0 {
+			interval = time.Second / 10
+		}
+		ticker := time.NewTicker(interval)
 		i := 1
 		for {
 			select {

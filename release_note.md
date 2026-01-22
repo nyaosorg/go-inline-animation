@@ -3,7 +3,7 @@ Release notes
 
 -  Made the `Width` field of the `Animation` struct optional. (#1)
   -  It is now automatically measured using `go-runewidth`.
--  Added the `Interval` field.
+-  Added the `Interval` field. (#2)
 
 v0.2.0
 ------

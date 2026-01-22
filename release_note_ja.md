@@ -3,7 +3,7 @@ Release notes
 
 - 構造体 Animation のフィールド Width を省略できるようにした (#1)
   - go-runewidth で自動計測するようにした
-- フィールド: Interval を追加
+- フィールド: Interval を追加 (#2)
 
 v0.2.0
 ------

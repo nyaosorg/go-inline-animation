@@ -79,8 +79,5 @@ func (this Animation) Progress(out io.Writer) func() {
 }
 
 func Progress() func() {
-	return Animation{
-		Frame: []string{" /", " -", " \u2216", " |"},
-		Width: 2,
-	}.Progress(os.Stdout)
+	return Dots.Progress(os.Stdout)
 }

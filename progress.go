@@ -30,6 +30,11 @@ var Dots = Animation{
 	},
 }
 
+var Bars = Animation{
+	Frame:    []string{" /", " -", " \u2216", " |"},
+	Interval: time.Second / 2,
+}
+
 func (this Animation) Progress(out io.Writer) func() {
 	done := make(chan struct{})
 	go func() {

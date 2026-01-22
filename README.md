@@ -3,24 +3,26 @@ go-inline-animation
 
 ![image](./demo.gif)
 
-example:
+[example.go](./example.go)
 
-```go
-// +build run
-
+```example.go
 package main
 
 import (
     "fmt"
     "time"
 
+    "github.com/mattn/go-colorable"
+
     "github.com/nyaosorg/go-inline-animation"
 )
 
 func main() {
-    fmt.Print("Test:")
+    term := colorable.NewColorableStdout()
+    fmt.Fprint(term, animation.CursorOff)
+    defer fmt.Fprintln(term, animation.CursorOn)
 
-    end := animation.Progress()
+    end := animation.Dots.Progress(term)
     defer end()
 
     // You can write a time-consuming process instead of Sleep.
@@ -28,26 +30,29 @@ func main() {
 }
 ```
 
-```go
-// +build run
+[example2.go](./example2.go)
 
+```example2.go
 package main
 
 import (
     "fmt"
-    "os"
     "time"
+
+    "github.com/mattn/go-colorable"
 
     "github.com/nyaosorg/go-inline-animation"
 )
 
 func main() {
-    fmt.Print("Test:")
+    term := colorable.NewColorableStdout()
+    fmt.Fprint(term, animation.CursorOff)
+    defer fmt.Fprintln(term, animation.CursorOn)
 
     end := animation.Animation{
-        Frame: []string{"(^_^)", "(-_-)"},
-        Width: 5,
-    }.Progress(os.Stdout)
+        Frame:    []string{"(^_^)", "(-_-)"},
+        Interval: time.Second / 2,
+    }.Progress(term)
 
     defer end()
 

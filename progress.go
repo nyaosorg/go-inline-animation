@@ -15,6 +15,21 @@ type Animation struct {
 	Interval time.Duration
 }
 
+var Dots = Animation{
+	Frame: []string{
+		"⠋", //	U+280B	Braille Pattern Dots-124
+		"⠙", //	U+2819	Braille Pattern Dots-145
+		"⠹", //	U+2839	Braille Pattern Dots-1456
+		"⠸", //	U+2838	Braille Pattern Dots-456
+		"⠼", //	U+283C	Braille Pattern Dots-3456
+		"⠴", //	U+2834	Braille Pattern Dots-356
+		"⠦", //	U+2826	Braille Pattern Dots-236
+		"⠧", //	U+2827	Braille Pattern Dots-1236
+		"⠇", //	U+2807	Braille Pattern Dots-123
+		"⠏", //	U+280F	Braille Pattern Dots-1234
+	},
+}
+
 func (this Animation) Progress(out io.Writer) func() {
 	done := make(chan struct{})
 	go func() {

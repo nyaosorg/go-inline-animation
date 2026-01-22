@@ -5,6 +5,8 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/mattn/go-runewidth"
 )
 
 type Animation struct {
@@ -15,8 +17,12 @@ type Animation struct {
 func (this Animation) Progress(out io.Writer) func() {
 	done := make(chan struct{})
 	go func() {
-		backspace := strings.Repeat("\b", this.Width)
-		erase := strings.Repeat(" ", this.Width)
+		w := this.Width
+		if w <= 0 {
+			w = runewidth.StringWidth(this.Frame[0])
+		}
+		backspace := strings.Repeat("\b", w)
+		erase := strings.Repeat(" ", w)
 
 		io.WriteString(out, this.Frame[0])
 

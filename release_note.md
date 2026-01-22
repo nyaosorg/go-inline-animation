@@ -1,6 +1,10 @@
 Release notes
 =============
 
+v0.3.0
+------
+Jan 22, 2026
+
 -  Made the `Width` field of the `Animation` struct optional. (#1)
   -  It is now automatically measured using `go-runewidth`.
 -  Added the `Interval` field. (#2)

@@ -1,5 +1,5 @@
-Release notes
-=============
+Changelog
+=========
 
 - Fixed an issue where the animation was erased asynchronously during termination, causing incorrect cursor positioning. (#6)
 

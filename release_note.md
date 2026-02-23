@@ -1,6 +1,8 @@
 Release notes
 =============
 
+- Fixed an issue where the animation was erased asynchronously during termination, causing incorrect cursor positioning. (#6)
+
 v0.3.0
 ------
 Jan 22, 2026

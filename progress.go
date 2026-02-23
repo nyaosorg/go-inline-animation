@@ -42,6 +42,7 @@ var Bars = Animation{
 
 func (this Animation) Progress(out io.Writer) func() {
 	done := make(chan struct{})
+	quit := make(chan struct{})
 	go func() {
 		w := this.Width
 		if w <= 0 {
@@ -62,10 +63,10 @@ func (this Animation) Progress(out io.Writer) func() {
 			select {
 			case <-done:
 				ticker.Stop()
-				close(done)
 				io.WriteString(out, backspace)
 				io.WriteString(out, erase)
 				io.WriteString(out, backspace)
+				close(quit)
 				return
 			case <-ticker.C:
 				if i >= len(this.Frame) {
@@ -79,7 +80,8 @@ func (this Animation) Progress(out io.Writer) func() {
 	}()
 
 	return func() {
-		done <- struct{}{}
+		close(done)
+		<-quit
 	}
 }
 
